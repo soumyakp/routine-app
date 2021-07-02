@@ -1,0 +1,45 @@
+<section>
+  <mat-toolbar color="accent">
+    <mat-toolbar-row>
+      <span>Daily Routine</span>
+      <span class="header-spacer"></span>
+      <button
+        mat-icon-button
+        (click)="addRoutineModal()"
+        aria-label="Example icon-button with add icon"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <main class="main">
+    <ng-container *ngIf="!isLoading"></ng-container>
+    <mat-card *ngFor="let routine of routineDate" class="example-card">
+      <mat-card-content>
+        <div class="content">
+          <div class="datails">
+            <h2>{{ routine.title }}</h2>
+            <p>{{ routine.description }}</p>
+          </div>
+          <div class="action">
+            <button
+              mat-icon-button
+              (click)="editRoutineModal(routine)"
+              aria-label="Example icon-button with edit icon"
+            >
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              (click)="deleteRoutineModal(routine)"
+              aria-label="Example icon-button with delete icon"
+            >
+              <mat-icon color="warn">delete_forever</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </main>
+</section>

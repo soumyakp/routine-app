@@ -1,0 +1,97 @@
+<ng-container *ngIf="showFormDialog">
+  <form
+    [ngStyle]="{ height: '100%' }"
+    [formGroup]="addForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="container-box">
+      <div class="input-item">
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Your routine title"
+            name="title"
+            formControlName="title"
+          />
+          <mat-error
+            *ngIf="
+              !addForm.controls['title'].valid &&
+              addForm.controls['title'].touched
+            "
+          >
+            <mat-error *ngIf="addForm.controls['title'].status === 'INVALID'">
+              Title missing !
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Your routine description"
+            name="description"
+            formControlName="description"
+          />
+          <mat-error
+            *ngIf="
+              !addForm.controls['description'].valid &&
+              addForm.controls['description'].touched
+            "
+          >
+            <mat-error
+              *ngIf="addForm.controls['description'].status === 'INVALID'"
+            >
+              Description missing !
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-item">
+        <label for="complete">Completed: </label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          formControlName="completed"
+          color="primary"
+        >
+          <mat-radio-button class="example-radio-button" value="0">
+            No
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button" value="1">
+            Yes
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="btn-action">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+      </div>
+    </div>
+  </form>
+</ng-container>
+
+<ng-container *ngIf="showConfirmDialog">
+  <div class="container-box">
+    <h2>Do you want to delete your routine?</h2>
+    <div class="btn-action">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteRoutine()"
+        aria-label="Example icon-button with edit icon"
+      >
+        <mat-icon>done</mat-icon>Yes
+      </button>
+      <button
+        mat-raised-button
+        mat-dialog-close
+        aria-label="Example icon-button with delete icon"
+      >
+        <mat-icon color="primary">do_disturb_on</mat-icon>No
+      </button>
+    </div>
+  </div>
+</ng-container>

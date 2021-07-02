@@ -1,0 +1,28 @@
+section {
+  height: 100%;
+  background: url('/assets/images/background.jpg') no-repeat center center /
+    cover;
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+mat-spinner {
+  margin: 10px auto;
+}
+
+.main {
+  max-width: 980px;
+  margin: 10px auto;
+}
+
+.example-card {
+  margin: 10px auto;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
